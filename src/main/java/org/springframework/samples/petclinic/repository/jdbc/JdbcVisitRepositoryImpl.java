@@ -85,12 +85,12 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
         Map<String, Object> params = new HashMap<>();
         params.put("id", petId);
         JdbcPet pet = this.jdbcTemplate.queryForObject(
-                "SELECT id, name, birth_date, type_id, owner_id FROM pets WHERE id=:id",
+                "SELECT id as pets_id, name, birth_date, type_id, owner_id FROM pets WHERE id=:id",
                 params,
                 new JdbcPetRowMapper());
 
         List<Visit> visits = this.jdbcTemplate.query(
-            "SELECT id as visit_id, visit_date, description FROM visits WHERE pet_id=:id",
+            "SELECT id as visit_id, visits.pet_id as pets_id, visit_date, description FROM visits WHERE pet_id=:id",
             params, new JdbcVisitRowMapper());
 
         for (Visit visit: visits) {
