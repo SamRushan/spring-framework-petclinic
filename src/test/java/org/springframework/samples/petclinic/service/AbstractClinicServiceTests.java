@@ -137,8 +137,8 @@ abstract class AbstractClinicServiceTests {
         Collection<PetType> types = this.clinicService.findPetTypes();
         pet.setType(EntityUtils.getById(types, PetType.class, 2));
         //pet.setBirthDate(LocalDate.now());
-        Date date = Date.valueOf(LocalDate.now());
-        pet.setBirthDate(date);
+        LocalDate localDate = LocalDate.now();
+        pet.setBirthDate(localDate);
         owner6.addPet(pet);
         assertThat(owner6.getPets().size()).isEqualTo(found + 1);
 
