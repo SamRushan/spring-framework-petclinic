@@ -57,7 +57,7 @@ ALTER SEQUENCE owners_id_seq RESTART WITH 100;
 
 
 CREATE TABLE IF NOT EXISTS pets (
-  pets.id SERIAL,
+  id SERIAL,
   name VARCHAR(30),
   birth_date DATE,
   type_id INT NOT NULL,
